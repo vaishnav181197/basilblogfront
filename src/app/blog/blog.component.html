@@ -1,0 +1,43 @@
+<!-- <div class="card" style="width: 18rem;">
+    <div class="card-body" *ngFor="let i of blog">
+      <h6 class="card-subtitle mb-2 text-muted">{{i.username}}</h6>
+      <h5 class="card-title">{{i.title}}</h5>
+      <p class="card-text">{{i.content}}</p>
+      <button type="btn">Edit</button>
+      <button type="btn">Delet</button>
+    </div>
+  </div>
+
+   -->
+   <div class="row">
+    <div class="span8"  *ngFor="let i of blog">
+      <div class="row">
+        <div class="span8">
+          <h4 id="title"><strong >{{i.title}}</strong></h4>
+          <label> <i class="icon-user"></i>{{i.username}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <a href="#" class="thumbnail">
+              <!-- <img src="http://placehold.it/260x180" alt=""> -->
+          </a>
+        </div>
+        <div class="span6">      
+          <p>
+            {{i.content}}
+          </p>
+           <button type="button" class="btn btn-primary" >Edit</button>
+          <button type="button" class="btn btn-danger" style="margin-left: 25px;">Delete</button> 
+        </div> 
+      </div>
+      <div class="row">
+        <div class="span8">
+          <p></p>
+          <p>
+            <i class="icon-user"></i><td>{{i.username}}</td> 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
