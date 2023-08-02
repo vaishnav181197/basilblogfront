@@ -1,0 +1,44 @@
+<app-dashboard></app-dashboard>
+
+<div class="p-3" id="ddd" *ngIf="cuser;else logt">
+    <!-- <button class="btn btn-primary mb-5" type="button" data-bs-toggle="modal" data-bs-target="#addModal">Post+</button> -->
+
+    <div class="card mb-5" style="width: 100%;" *ngFor="let i of blog">
+        <!-- <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap"> -->
+        <div class="card-body bg-light">
+            <div *ngIf="i.username == cuser;else elsedata">
+                <h5 class="card-title">Me</h5>
+            </div>
+            <ng-template #elsedata>
+                <h5 class="card-title">{{i.username}}</h5>
+
+            </ng-template>
+            <!-- <p class="card-text">{{i.content}}</p> -->
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h1>{{i.title}}</h1><br>
+                {{i.content}}
+            </li>
+            <li class="list-group-item">{{i.date|date}}</li>
+        </ul>
+        <div class="card-body">
+            <!-- <a href="#" class="card-link">Card link</a> -->
+            <div *ngIf="i.username == cuser">
+                <button (click)="remove(i._id)" class="btn btn-danger">Remove</button>
+
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <h4>Comments</h4>
+            <div class="card-body" id="ccdd" *ngFor="let j of i.cmnt">
+                <h6>{{j.cmnt}}</h6>
+                <p class="font-italics text-end">{{j.user}}</p>
+              </div>
+        </div>
+    </div>
+</div>
+<ng-template #logt>
+    <h3 class="display-3">Log In First!!!</h3>
+</ng-template>

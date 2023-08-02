@@ -1,43 +1,55 @@
-<!-- <div class="card" style="width: 18rem;">
-    <div class="card-body" *ngFor="let i of blog">
-      <h6 class="card-subtitle mb-2 text-muted">{{i.username}}</h6>
-      <h5 class="card-title">{{i.title}}</h5>
-      <p class="card-text">{{i.content}}</p>
-      <button type="btn">Edit</button>
-      <button type="btn">Delet</button>
-    </div>
-  </div>
+<app-dashboard></app-dashboard>
 
-   -->
-   <div class="row">
-    <div class="span8"  *ngFor="let i of blog">
-      <div class="row">
-        <div class="span8">
-          <h4 id="title"><strong >{{i.title}}</strong></h4>
-          <label> <i class="icon-user"></i>{{i.username}}</label>
-        </div>
+<div class="p-3"  *ngIf="cuser;else logt">
+  <button class="btn btn-success mb-5"  type="button" data-bs-toggle="modal" data-bs-target="#addModal">Post+</button>
+
+  <div class="card mb-5" id="ddd" style="width: 100%;" *ngFor="let i of blog">
+    <!-- <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap"> -->
+    <div class="card-body bg-light">
+      <div *ngIf="i.username == cuser;else elsedata">
+        <h5 class="card-title"><span class="badge bg-danger">Me</span></h5>
       </div>
-      <div class="row">
-        <div class="span2">
-          <a href="#" class="thumbnail">
-              <!-- <img src="http://placehold.it/260x180" alt=""> -->
-          </a>
-        </div>
-        <div class="span6">      
-          <p>
-            {{i.content}}
-          </p>
-           <button type="button" class="btn btn-primary" >Edit</button>
-          <button type="button" class="btn btn-danger" style="margin-left: 25px;">Delete</button> 
-        </div> 
-      </div>
-      <div class="row">
-        <div class="span8">
-          <p></p>
-          <p>
-            <i class="icon-user"></i><td>{{i.username}}</td> 
-          </p>
+      <ng-template #elsedata>
+        <h5 class="card-title">{{i.username}}</h5>
+
+      </ng-template>
+      <!-- <p class="card-text">{{i.content}}</p> -->
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <h1>{{i.title}}</h1><br>
+        {{i.content}}
+      </li>
+     <li class="list-group-item">{{i.date|date}}</li>
+    </ul>
+    <div class="card-body">
+      <div *ngIf="cuser != i.username">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Comment
+        </button>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <form [formGroup]="cform" (ngSubmit)="submitted(i._id)">
+              <textarea name="" formControlName="cmnt" class="form-control" placeholder="Enter your Comment here!!" id="" cols="30" rows="10"></textarea>
+              <div *ngIf="this.cform.invalid;else valid" class="alert alert-danger">
+                Enter a comment
+              </div>
+              <ng-template #valid>
+                <button class="btn btn-info">Submit</button>
+              </ng-template>
+            </form>
+            <div>
+              <div class="card-body" id="ccdd" *ngFor="let j of i.cmnt">
+                <h6>{{j.cmnt}}</h6>
+                <p class="font-italics text-end">{{j.user}}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<ng-template #logt>
+  <h3 class="display-3">Log In First!!!</h3>
+</ng-template>

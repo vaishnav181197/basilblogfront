@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BlogComponent } from './blog/blog.component';
+import { MyblogComponent } from './myblog/myblog.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'reg',component:RegisterComponent},
   {path:'footer',component:FooterComponent},
   {path:'dash',component:DashboardComponent},
-  {path:'blog',component:BlogComponent}
+  {path:'blog',component:BlogComponent},
+  {path:'mb',component:MyblogComponent}
 
  
 ];

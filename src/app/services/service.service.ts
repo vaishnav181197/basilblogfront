@@ -41,13 +41,13 @@ export class ServiceService {
     
   }
   
-  addpost(  title: any ,content:any,username:any) {
+  addpost(  title: any ,content:any,username:any,date:any) {
 
     let data={
      
       title,
       content,
-      username
+      username,date
     }
 
     console.log(data+"jassss")
@@ -58,4 +58,28 @@ getpost(){
   return this.http.get<any[]>(`${this.apiUrl}/getpost`);
 
 }
+getmypost(){
+  let data={
+    me:localStorage.getItem('currentUsId')
+  }
+  return this.http.post(`${this.apiUrl}/getmypost`,data);
+
+}
+removeb(id:any){
+  let data={
+    _id:id
+  }
+  return this.http.post(`${this.apiUrl}/rmblog`,data);
+}
+addcmnt(cmnt:any,user:any,_id:any){
+  let data={
+    cmnt,
+    user,
+    _id
+  }
+  return this.http.post(`${this.apiUrl}/addcmnt`,data);
+}
+
+
+
 }

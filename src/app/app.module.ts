@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BlogComponent } from './blog/blog.component';
+import { MyblogComponent } from './myblog/myblog.component';
 
 
 
@@ -24,6 +25,7 @@ import { BlogComponent } from './blog/blog.component';
     FooterComponent,
     DashboardComponent,
     BlogComponent,
+    MyblogComponent,
 
 
   ],

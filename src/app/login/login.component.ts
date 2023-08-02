@@ -31,12 +31,13 @@ export class LoginComponent {
     let res = this.ss.login(usid,pswd)
  console.log(usid,pswd + 'from reactive form')
   res.subscribe((resp:any)=>{
+    console.log('flog')
     if(resp){
       localStorage.setItem("currentUser",resp.currentUser)
       localStorage.setItem("currentUsId",resp.currentUserId)
       // localStorage.setItem("token",JSON.stringify(resp.token))
       alert(resp.message)
-      this.r.navigateByUrl("movie")
+      this.r.navigateByUrl("blog")
     }
   // },
   // (err)=>{

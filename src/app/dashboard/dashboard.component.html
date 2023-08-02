@@ -10,7 +10,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <form class="d-flex me-3 ms-auto">
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addModal">Create Post</button>
+                    <button class="btn btn-primary" type="button" routerLink="/blog">HOME</button>
+                    <button class="btn btn-primary" type="button" routerLink="/mb">MyBlogs</button>
+                    <button class="btn btn-danger " (click)="lgout()" type="button">Log Out</button>
                 </form>
             </div>
         </div>
@@ -34,12 +36,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="content" class="form-label">Content</label>
-                            <input type="text" class="form-control" name="content"  formControlName="content">
+                            <!-- <input type="text" class="form-control" name="content"  formControlName="content"> -->
+                            <textarea name="" formControlName="content" class="form-control" id="" cols="30" rows="10"></textarea>
                           </div>
-                          <div class="mb-3">
+                          <!-- <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" name="username"  formControlName="username">
-                          </div>
+                          </div> -->
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Save Post</button>
@@ -51,7 +54,7 @@
         </div>
     </div>
     
-<app-blog></app-blog>
+<!-- <app-blog></app-blog> -->
 
 
      <!-- post details -->

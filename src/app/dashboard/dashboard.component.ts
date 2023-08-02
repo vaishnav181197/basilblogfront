@@ -23,7 +23,10 @@ export class DashboardComponent implements OnInit {
   username:string = '';
   allPosts:Post[]=[];
 
-  constructor(private api: ApiService,private http: HttpClient,private fb:FormBuilder,private r:Router,private ss:ServiceService){ }
+  constructor(private api: ApiService,private http: HttpClient,private fb:FormBuilder,private r:Router,private ss:ServiceService){
+    this.getAllPost();
+
+   }
   ngOnInit(): void {
     this.titile ='';
     this.content = '';
@@ -111,13 +114,14 @@ export class DashboardComponent implements OnInit {
   clicked(){
     let title=this.lgform.value.title
     let content=this.lgform.value.content
-    let username=this.lgform.value.username
+    let date=String(new Date())
+    let username=localStorage.getItem('currentUsId')
     
     
    
   
   console.log(title)
-    let res=this.ss.addpost(title,content,username)
+    let res=this.ss.addpost(title,content,username,date)
     console.log(res)
   res.subscribe((resp:any)=>{
     if(resp){
@@ -125,8 +129,9 @@ export class DashboardComponent implements OnInit {
   // localStorage.setItem("currentAcno",resp.currentAcno)
   // localStorage.setItem ("token",JSON.stringify(resp.token))
   alert(resp.message)
-  this.r.navigateByUrl("tdv")
-    }
+  this.r.navigateByUrl("blog")
+      
+}
   },
   (err:any)=>{
     alert(err.error.message)
@@ -134,7 +139,10 @@ export class DashboardComponent implements OnInit {
   
   
   }
-  
+  lgout(){
+    localStorage.clear()
+    this.r.navigateByUrl('log')
+  }
   
   
 
